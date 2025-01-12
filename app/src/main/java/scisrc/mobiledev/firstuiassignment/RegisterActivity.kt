@@ -1,5 +1,6 @@
 package scisrc.mobiledev.firstuiassignment
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var backToMainPageBtn: Button
+    lateinit var gotologinbtn :Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +23,26 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
+        bindbtn()
+
+        addlistener()
+
         backToMainPageBtn = findViewById(R.id.registBackToMainBtn)
 
         backToMainPageBtn.setOnClickListener() {
             finish()
         }
     }
+
+    fun bindbtn(){
+        gotologinbtn = findViewById(R.id.gotologinbtn)
+    }
+
+    fun addlistener(){
+        gotologinbtn.setOnClickListener(){
+            val intent = Intent(this ,LoginActivity::class.java).setAction("go to login")
+            startActivity(intent)
+    }
+    }
+
 }
